@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Рецепты</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ЗАСТАВКА ПРИ ЗАГРУЗКЕ -->
+  <div id="introScreen">
+    <div class="intro-scene">
+      
+      <div class="intro-text-wrapper">
+        <svg class="intro-svg" viewBox="0 0 500 150">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Foodgram</text>
+        </svg>
+        
+        <!-- Группа: Огонь + Сковородка (летают вместе) -->
+        <div class="pan-group">
+          <div class="intro-fire">♨️</div>
+          <div class="intro-pan">
+            <div class="pan-egg">🍳</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- КОНЕЦ ЗАСТАВКИ -->
+  <header class="header">
+    <div class="logo">
+      <div class="pan-container">
+        <span class="fire">♨️</span>
+        <span class="egg">🍳</span>
+      </div>
+      <span class="logo-text">
+        <span>F</span><span>o</span><span>o</span><span>d</span><span>g</span><span>r</span><span>a</span><span>m</span>
+      </span>
+    </div>
+    <nav class="nav">
+      <div class="search-wrap">
+        <button id="searchToggle" class="icon-btn" title="Поиск">🔍</button>
+        <input type="search" id="searchInput" class="search-input"
+               placeholder="Найти рецепт..." autocomplete="off">
+        <div id="searchSuggestions" class="search-suggestions"></div>
+      </div>
+
+      <a href="index.html">Главная</a>
+
+      <div id="userMenu" class="user-menu" style="display:none">
+        <button id="userMenuBtn" class="user-menu-btn">
+          <span id="userName">user</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div id="userDropdown" class="user-dropdown">
+          <a href="profile.html">👤 Мой профиль</a>
+          <a href="acaunt.html">📖 Мои рецепты</a>
+          <a href="create.html">+ Создать рецепт</a>
+          <a href="liked.html">♥ Понравившиеся рецепты</a>
+          <a href="saved.html">★ Избранные рецепты</a>
+          <a href="#" id="logoutBtn" class="logout-link">⎋ Выход</a>
+        </div>
+      </div>
+
+      <span id="authBlock">
+        <a href="login.html">Вход</a>
+        <a href="register.html">Регистрация</a>
+      </span>
+
+      <button id="themeToggle" class="theme-toggle" title="Переключить тему">🌙</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="categories" id="catNav">
+      <button class="cat-btn" data-cat="desserts">Десерты</button>
+      <button class="cat-btn" data-cat="drinks">Напитки</button>
+      <button class="cat-btn" data-cat="hot">Горячие блюда</button>
+      <button class="cat-btn" data-cat="soups">Супы</button>
+      <button class="cat-btn" data-cat="salads">Салаты</button>
+      <button class="cat-btn" data-cat="bakery">Выпечка</button>
+      <button class="cat-btn" data-cat="snacks">Закуски</button>
+      <button class="cat-btn" data-cat="breakfast">Завтраки</button>
+    </div>
+
+    <h1 class="title" id="catTitle">Рецепты</h1>
+    <div class="cards" id="recipes"></div>
+  </main>
+
+  <script src="js/category.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

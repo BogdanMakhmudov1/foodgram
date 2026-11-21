@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактировать рецепт</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ЗАСТАВКА ПРИ ЗАГРУЗКЕ (не покажется благодаря no_intro) -->
+  <div id="introScreen">
+    <div class="intro-scene">
+      <div class="intro-text-wrapper">
+        <svg class="intro-svg" viewBox="0 0 500 150">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Foodgram</text>
+        </svg>
+        <div class="pan-group">
+          <div class="intro-fire">♨️</div>
+          <div class="intro-pan">
+            <div class="pan-egg">🍳</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- КОНЕЦ ЗАСТАВКИ -->
+
+  <header class="header">
+    <div class="logo">
+      <div class="pan-container">
+        <span class="fire">♨️</span>
+        <span class="egg">🍳</span>
+      </div>
+      <span class="logo-text">
+        <span>F</span><span>o</span><span>o</span><span>d</span><span>g</span><span>r</span><span>a</span><span>m</span>
+      </span>
+    </div>
+    <nav class="nav">
+      <a href="index.html">На главную</a>
+      <button id="themeToggle" class="theme-toggle" title="Переключить тему">🌙</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="title">Редактирование</h1>
+    <form id="editForm" class="auth-form">
+      <input type="text" name="title" id="edTitle" placeholder="Название" required>
+      
+      <select name="category" id="edCategory" required>
+        <option value="desserts">Десерты</option>
+        <option value="drinks">Напитки</option>
+        <option value="hot">Горячие блюда</option>
+        <option value="soups">Супы</option>
+        <option value="salads">Салаты</option>
+        <option value="bakery">Выпечка</option>
+        <option value="snacks">Закуски</option>
+        <option value="breakfast">Завтраки</option>
+      </select>
+
+      <textarea name="description" id="edDescription" placeholder="Краткое описание" rows="2"></textarea>
+
+      <div class="ingredients-box">
+        <label>Ингредиенты:</label>
+        <select id="ingredientSelect">
+          <option value="">— Выберите ингредиент —</option>
+        </select>
+        <input type="text" id="ingredientAmount" placeholder="Кол-во (например, 200 г)">
+        <button type="button" id="addIngredient" class="cat-btn">Добавить</button>
+        <ul id="ingredientsList"></ul>
+        <input type="hidden" name="ingredients" id="ingredientsHidden">
+      </div>
+
+      <textarea name="steps" id="edSteps" placeholder="Шаги приготовления" rows="5" required></textarea>
+      
+      <!-- Блок загрузки фото -->
+      <label class="custom-file-upload">
+        <input type="file" id="imageFile" accept="image/*" onchange="updateFileName(this)">
+        <div class="file-upload-text">
+          <span>📷</span>
+          Заменить фото блюда
+        </div>
+        <div class="file-name" id="fileNameDisplay">Файл не выбран</div>
+      </label>
+
+      <button type="submit" class="cat-btn">Сохранить изменения</button>
+      <p id="msg"></p>
+    </form>
+  </main>
+
+  <script src="js/edit.js"></script>
+  
+  <!-- Скрипт для показа имени выбранного файла -->
+  <script>
+    function updateFileName(input) {
+      const display = document.getElementById('fileNameDisplay');
+      if (input.files && input.files.length > 0) {
+        display.textContent = input.files[0].name;
+        display.style.color = 'var(--accent)';
+        display.style.fontWeight = 'bold';
+      } else {
+        display.textContent = 'Файл не выбран';
+        display.style.color = 'var(--text-muted)';
+        display.style.fontWeight = 'normal';
+      }
+    }
+  </script>
+</body>
+</html>

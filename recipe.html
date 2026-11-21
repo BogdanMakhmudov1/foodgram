@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Просмотр рецепта</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Локальные стили для страницы рецепта, чтобы не засорять общий style.css */
+    .recipe-detail {
+      background: var(--bg-card);
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+    .recipe-detail img.main-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .recipe-detail h1 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    .recipe-detail .meta {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    .recipe-detail h3 {
+      margin: 20px 0 10px;
+      color: var(--accent);
+    }
+    .recipe-detail ul.ing-list {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      list-style-type: disc;
+    }
+    .recipe-detail ul.ing-list li {
+      margin-bottom: 5px;
+    }
+    .recipe-detail p.steps-text {
+      line-height: 1.6;
+      white-space: pre-wrap;
+      margin-bottom: 20px;
+    }
+    .actions-row {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- ЗАСТАВКА ПРИ ЗАГРУЗКЕ -->
+  <div id="introScreen">
+    <div class="intro-scene">
+      <div class="intro-text-wrapper">
+        <svg class="intro-svg" viewBox="0 0 500 150">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Foodgram</text>
+        </svg>
+        <div class="pan-group">
+          <div class="intro-fire">♨️</div>
+          <div class="intro-pan">
+            <div class="pan-egg">🍳</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- КОНЕЦ ЗАСТАВКИ -->
+
+  <header class="header">
+    <div class="logo">
+      <div class="pan-container">
+        <span class="fire">♨️</span>
+        <span class="egg">🍳</span>
+      </div>
+      <span class="logo-text">
+        <span>F</span><span>o</span><span>o</span><span>d</span><span>g</span><span>r</span><span>a</span><span>m</span>
+      </span>
+    </div>
+    <nav class="nav">
+      <div class="search-wrap">
+        <button id="searchToggle" class="icon-btn" title="Поиск">🔍</button>
+        <input type="search" id="searchInput" class="search-input" placeholder="Найти рецепт..." autocomplete="off">
+        <div id="searchSuggestions" class="search-suggestions"></div>
+      </div>
+      <a href="index.html">На главную</a>
+      
+      <div id="userMenu" class="user-menu" style="display:none">
+        <button id="userMenuBtn" class="user-menu-btn">
+          <img id="headerAvatar" src="" alt="Аватар" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; display: none;">
+          <span id="userName">user</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div id="userDropdown" class="user-dropdown">
+          <a href="profile.html">👤 Мой профиль</a>
+          <a href="acaunt.html">📖 Мои рецепты</a>
+          <a href="create.html">+ Создать рецепт</a>
+          <a href="saved.html">★ Избранные рецепты</a>
+          <a href="#" id="logoutBtn" class="logout-link">⎋ Выход</a>
+        </div>
+      </div>
+
+      <span id="authBlock">
+        <a href="login.html">Вход</a>
+        <a href="register.html">Регистрация</a>
+      </span>
+      <button id="themeToggle" class="theme-toggle" title="Переключить тему">🌙</button>
+    </nav>
+  </header>
+
+  <main class="container" id="recipeContainer">
+    <!-- Сюда JavaScript вставит рецепт -->
+    <p>Загрузка...</p>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/recipe.js"></script>
+</body>
+</html>
