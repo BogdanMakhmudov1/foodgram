@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Мой профиль</title>
+  
+  <!-- Подключаем скрипт темы (и заставки) -->
+  <script src="js/theme.js"></script>
+  
+  <!-- Стили для красивого календаря Flatpickr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+  <!-- ЗАСТАВКА ПРИ ЗАГРУЗКЕ -->
+  <div id="introScreen">
+    <div class="intro-scene">
+      <div class="intro-text-wrapper">
+        <svg class="intro-svg" viewBox="0 0 500 150">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Foodgram</text>
+        </svg>
+        <div class="pan-group">
+          <div class="intro-fire">♨️</div>
+          <div class="intro-pan">
+            <div class="pan-egg">🍳</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- КОНЕЦ ЗАСТАВКИ -->
+
+  <header class="header">
+    <div class="logo">
+      <div class="pan-container">
+        <span class="fire">♨️</span>
+        <span class="egg">🍳</span>
+      </div>
+      <span class="logo-text">
+        <span>F</span><span>o</span><span>o</span><span>d</span><span>g</span><span>r</span><span>a</span><span>m</span>
+      </span>
+    </div>
+    <nav class="nav">
+      <a href="index.html">На главную</a>
+      <a href="acaunt.html">Мои рецепты</a>
+      <button id="themeToggle" class="theme-toggle" title="Переключить тему">🌙</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="title">Мой профиль</h1>
+
+    <!-- ================= РЕЖИМ ПРОСМОТРА ================= -->
+    <div id="viewMode" class="auth-form" style="max-width: 500px;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <!-- Аватарка -->
+        <img id="viewAvatar" src="https://via.placeholder.com/150?text=User" 
+             style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--btn); margin-bottom: 15px;">
+      </div>
+      
+      <h2 id="viewUsername" style="color: var(--accent); margin-bottom: 15px;">Имя</h2>
+      
+      <div style="text-align: left; margin-bottom: 10px; line-height: 1.6;">
+        <p><strong>Email:</strong> <span id="viewEmail">...</span></p>
+        <p><strong>Телефон:</strong> <span id="viewPhone">...</span></p>
+        <p><strong>Дата рождения:</strong> <span id="viewBirthdate">...</span></p>
+      </div>
+
+      <button id="editBtn" class="cat-btn" style="margin-top: 20px;">✏️ Редактировать профиль</button>
+    </div>
+
+    <!-- ================= РЕЖИМ РЕДАКТИРОВАНИЯ ================= -->
+    <form id="editMode" class="auth-form" style="max-width: 500px; display: none;">
+      
+      <!-- Загрузка аватарки -->
+      <label class="custom-file-upload" style="margin-top: 0;">
+        <input type="file" id="avatarFile" accept="image/*" onchange="updateFileName(this, 'avatarNameDisplay')">
+        <div class="file-upload-text">
+          <span>👤</span>
+          Загрузить аватарку
+        </div>
+        <div class="file-name" id="avatarNameDisplay">Файл не выбран</div>
+      </label>
+
+      <input type="text" name="username" id="profUsername" placeholder="Имя пользователя" required>
+      <input type="email" name="email" id="profEmail" placeholder="Email" required>
+      <input type="tel" name="phone" id="profPhone" placeholder="Номер телефона">
+      
+      <!-- Стилизованный выбор даты рождения -->
+      <div style="text-align: left; margin-top: 15px; margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">
+          Дата рождения:
+        </label>
+        <input type="text" name="birthdate" id="profBirthdate" placeholder="Выберите дату" style="width: 100%; cursor: pointer;" readonly>
+      </div>
+      
+      <div style="display: flex; gap: 10px; margin-top: 15px;">
+        <button type="button" id="cancelBtn" class="cat-btn" style="background: var(--text-muted);">Отмена</button>
+        <button type="submit" class="cat-btn">Сохранить</button>
+      </div>
+      <p id="msg"></p>
+    </form>
+  </main>
+
+  <!-- Контейнер для всплывающего уведомления -->
+  <div id="toast"></div>
+
+  <script src="js/profile.js"></script>
+  
+  <!-- Скрипт для показа имени выбранного файла -->
+  <script>
+    function updateFileName(input, displayId) {
+      const display = document.getElementById(displayId);
+      if (input.files && input.files.length > 0) {
+        display.textContent = input.files[0].name;
+        display.style.color = 'var(--accent)';
+        display.style.fontWeight = 'bold';
+      } else {
+        display.textContent = 'Файл не выбран';
+        display.style.color = 'var(--text-muted)';
+        display.style.fontWeight = 'normal';
+      }
+    }
+  </script>
+</body>
+</html>
